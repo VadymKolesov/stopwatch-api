@@ -1,0 +1,55 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "0.0.0",
+    "title": "Your api",
+    "description": "Description for your api"
+  },
+  "consumens": ["application/json", "multipart/form-data"],
+  "produces": ["application/json"],
+  "servers": [{ "url": "https:/example.com" }],
+  "tags": [{ "name": "Your tag", "description": "Your tag description" }],
+  "paths": {
+    "api/example": {
+      "post": {
+        "tags": ["Your tag"],
+        "summary": "Your summary",
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Request body description",
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YourRequestSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YourResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "in": "header"
+      }
+    },
+    "schemas": {}
+  }
+}
